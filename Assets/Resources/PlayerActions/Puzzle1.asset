@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Puzzle1
   m_EditorClassIdentifier: 
   actionName: Puzzle1
-  actionCost: 0
+  actionCost: 2
   actionCommentary: []
