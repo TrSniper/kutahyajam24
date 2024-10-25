@@ -2,7 +2,8 @@
 
 public class PlayerCamera : MonoBehaviour
 {
-    public Camera cam;
+    [SerializeField] Transform cam;
+    [SerializeField] Transform player;
 
     public float sensitivity = 1.0f;
     public float maxY = 60;
@@ -23,7 +24,8 @@ public class PlayerCamera : MonoBehaviour
 
         rotationPitch = Mathf.Clamp(rotationPitch, minY, maxY);
 
-        transform.localEulerAngles = new Vector3(rotationPitch, rotationYaw, transform.localEulerAngles.z);
+        cam.localEulerAngles = new Vector3(rotationPitch, 0, transform.localEulerAngles.z);
+        player.localEulerAngles = new Vector3(0, rotationYaw, 0);
     }
 
     void OnDisable()

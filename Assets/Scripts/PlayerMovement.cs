@@ -1,90 +1,60 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody rb;
-    private Vector3 move;
+    private Vector3 velocity;
+    private Vector3 movement;
+    private Vector3 cameraMovement;
+    private Vector2 mouseInput;
+    
+    private float xRotation = 0.0f;
 
-    private float xAxis, zAxis = 0;
-    private bool shiftPressed;
-
+    [SerializeField] LayerMask groundMask;
+    [SerializeField] CharacterController controller;
+    [SerializeField] Transform cameraT;
+    [Space]
+    [SerializeField] float sensivity;
+    [SerializeField] float groundDistance = 0.4f;
     [SerializeField] float movementMultiplier = 1.0f;
-    [SerializeField] float MaxSpeed = 5;
-    [SerializeField] float Acceleration = 50;
+    [SerializeField] float speed = 7.0f;
 
-    void Start()
+    private void Start()
     {
-        rb = GetComponent<Rigidbody>();        
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void Update()
     {
-        xAxis = Input.GetAxis("Horizontal");
-        zAxis = Input.GetAxis("Vertical");
-        shiftPressed = Input.GetKey(KeyCode.LeftShift);
-        move.Set(xAxis, 9.81f * Time.deltaTime, zAxis);
+        movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        movement = Vector3.ClampMagnitude(movement, 1.0f);
+        mouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        MovePlayer();
+        //MoveCamera();
     }
 
-    void FixedUpdate()
+    void MovePlayer()
     {
-        move.x = Mathf.MoveTowards(move.x, move.x * MaxSpeed, Acceleration * Time.fixedDeltaTime);
-        move.z = Mathf.MoveTowards(move.z, move.z * MaxSpeed, Acceleration * Time.fixedDeltaTime);
-        rb.velocity = move * movementMultiplier;
-        
-    }
-}
+        Vector3 move = transform.right * movement.x + transform.forward * movement.z;
 
-public class GameManager : MonoBehaviour
-{
-    public static GameManager instance;
-
-    private void Awake()
-    {
-        if (instance == null)
+        if(controller.isGrounded)
         {
-            instance = this;
+            velocity.y = -1f;
         }
         else
         {
-            Destroy(this);
+            velocity.y += Physics.gravity.y * Time.deltaTime;
         }
+        controller.Move(movementMultiplier * speed * Time.deltaTime * move);
+        controller.Move(velocity * Time.deltaTime);
     }
 
-}
 
-public class SoundManager: MonoBehaviour
-{
-    public static SoundManager instance;
-
-    private void Awake()
+    private void MoveCamera()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(this);
-        }
-    }
-}
-
-public class GhostManager: MonoBehaviour
-{
-    public static GhostManager instance;
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(this);
-        }
+        xRotation -= mouseInput.y * sensivity;
+        xRotation = Mathf.Clamp(xRotation, -90, 90);
+        transform.localRotation = Quaternion.Euler(0, mouseInput.x * sensivity, 0);
+        cameraT.localRotation = Quaternion.Euler(xRotation, 0, 0);  
     }
 }
