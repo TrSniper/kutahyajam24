@@ -1,18 +1,6 @@
 ﻿using UnityEngine;
 
-public class SoundManager: MonoBehaviour
+public class SoundManager: MonoSingleton<SoundManager>
 {
-    public static SoundManager instance;
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(this);
-        }
-    }
+    
 }

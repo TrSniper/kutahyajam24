@@ -1,18 +1,6 @@
 ﻿using UnityEngine;
 
-public class GhostManager: MonoBehaviour
+public class GhostManager : MonoSingleton<GhostManager>
 {
-    public static GhostManager instance;
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(this);
-        }
-    }
 }
+
