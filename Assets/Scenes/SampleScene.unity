@@ -1865,8 +1865,9 @@ GameObject:
   - component: {fileID: 1485608497}
   - component: {fileID: 1485608496}
   - component: {fileID: 1485608495}
+  - component: {fileID: 1485608499}
   m_Layer: 0
-  m_Name: Cube (11)
+  m_Name: DoorNormal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1958,6 +1959,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1485608499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485608494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da11e6593b872214dadfe47d6070874c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionType: 0
+  doorTransform: {fileID: 1485608498}
+  isLocked: 0
 --- !u!1 &1608853843
 GameObject:
   m_ObjectHideFlags: 0
@@ -2077,7 +2093,7 @@ GameObject:
   - component: {fileID: 1716500810}
   - component: {fileID: 1716500809}
   m_Layer: 0
-  m_Name: Cube (12)
+  m_Name: DoorDirection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2095,8 +2111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da11e6593b872214dadfe47d6070874c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionType: 0
+  interactionType: 1
   doorTransform: {fileID: 1716500813}
+  isLocked: 0
 --- !u!65 &1716500810
 BoxCollider:
   m_ObjectHideFlags: 0
