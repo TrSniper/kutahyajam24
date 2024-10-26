@@ -474,11 +474,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 952029043564417858, guid: 2273f673b34a1e545b9495a6d4494540, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1413396095820542028, guid: 2273f673b34a1e545b9495a6d4494540, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1736713341122827031, guid: 2273f673b34a1e545b9495a6d4494540, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -610,7 +610,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4306057517041348362, guid: 2273f673b34a1e545b9495a6d4494540, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4387580449818382026, guid: 2273f673b34a1e545b9495a6d4494540, type: 3}
       propertyPath: m_SizeDelta.y
@@ -892,6 +892,7 @@ GameObject:
   - component: {fileID: 383794443}
   - component: {fileID: 383794442}
   - component: {fileID: 383794446}
+  - component: {fileID: 383794447}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -996,6 +997,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableMessage: {fileID: 251118304}
+--- !u!225 &383794447
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383794441}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &385741173
 GameObject:
   m_ObjectHideFlags: 0
@@ -1223,6 +1236,7 @@ GameObject:
   - component: {fileID: 457883087}
   - component: {fileID: 457883086}
   - component: {fileID: 457883085}
+  - component: {fileID: 457883089}
   m_Layer: 0
   m_Name: Action Reading
   m_TagString: Untagged
@@ -1316,6 +1330,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &457883089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457883084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f419efc795f22b4b85a9e8727faf31c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  readingActionSO: {fileID: 11400000, guid: 8dbd6c710ded5fa4fac4e76d0501a520, type: 2}
+  diarySO: {fileID: 0}
 --- !u!1 &499090229
 GameObject:
   m_ObjectHideFlags: 0
@@ -1698,6 +1726,7 @@ GameObject:
   - component: {fileID: 667640576}
   - component: {fileID: 667640575}
   - component: {fileID: 667640574}
+  - component: {fileID: 667640578}
   m_Layer: 0
   m_Name: Action DigPoint
   m_TagString: Untagged
@@ -1791,6 +1820,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &667640578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667640573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 214766fe5ef46d64b83a321cc6ed0ec4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diggingActionSO: {fileID: 11400000, guid: 9d42e27aa7e44b448b01eb8c9257b3cf, type: 2}
+  isCluePoint: 0
 --- !u!1 &742110814
 GameObject:
   m_ObjectHideFlags: 0

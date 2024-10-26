@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Player Action", menuName = "Player Actions")]
 public abstract class PlayerAction : ScriptableObject
 {
     [SerializeField]
@@ -10,12 +9,14 @@ public abstract class PlayerAction : ScriptableObject
     {
         get { return actionName; }
     }
+
     [SerializeField]
     private int actionCost;
     public int ActionCost
     {
         get { return actionCost; }
     }
+
     [SerializeField]
     private string[] actionCommentary;
     public string[] ActionCommentary
@@ -23,6 +24,12 @@ public abstract class PlayerAction : ScriptableObject
         get { return actionCommentary; }
     }
 
+    [SerializeField]
+    private AudioClip[] actionDubs;
+    public AudioClip[] ActionDubs
+    {
+        get { return actionDubs; }
+    }
     public event Action<PlayerAction> OnExecutePlayerAction;
 
     public virtual void ExecuteAction()

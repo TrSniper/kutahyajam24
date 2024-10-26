@@ -9,6 +9,8 @@ public class Door : MonoBehaviour, IInteractableWithDirection
     public string InteractMessage => "Aç?";
 
     [SerializeField] Transform doorTransform;
+    [SerializeField] Transform otherDoor;
+    [SerializeField] bool isDoubleDoor = false;   
     [SerializeField] bool isLocked = false;
 
     private void Start()
@@ -20,14 +22,44 @@ public class Door : MonoBehaviour, IInteractableWithDirection
     private bool isOpen = false;
     public void Interact()
     {
-        OpenDoor();
+        if (isDoubleDoor)
+        {
+            OpenDoubleDoor();
+        }
+        else
+
+            OpenDoor();
         Debug.Log("No-Directional Interacting with door");
     }
     public void Interact(Vector3 v1)
     {
-        OpenDoor(v1);
+        if (isDoubleDoor)
+        {
+            OpenDoubleDoor();
+        }
+        else
+            OpenDoor(v1);
         Debug.Log("Directional Interacting with door");
     }
+
+    void OpenDoubleDoor()
+    {
+        OpenDoor();
+        otherDoor.GetComponent<Door>().OpenDoorReverse();
+    }
+
+    void OpenDoorReverse()
+    {
+        if (isOpen)
+        {
+            doorTransform.DOLocalRotate(new Vector3(0, 0, 0), 1f).OnComplete(() => isOpen = false);
+        }
+        else
+        {
+            doorTransform.DOLocalRotate(new Vector3(0, -90, 0), 1f).OnComplete(() => isOpen = true);
+        }
+    }
+
     void OpenDoor() //implement direction
     {
         if (isOpen)

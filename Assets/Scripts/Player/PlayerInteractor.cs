@@ -3,10 +3,16 @@ using UnityEngine;
 
 public class PlayerInteractor : MonoBehaviour
 {
-
     float _time = 0;
     IInteractable _interactableFound;
     public static event System.Action<string> OnFoundInteractable;
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
     private void Update()
     {
         if(_interactableFound != null)
@@ -41,7 +47,7 @@ public class PlayerInteractor : MonoBehaviour
     private IInteractable DetectInteractables()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit, 3))
+        if (Physics.Raycast(ray, out RaycastHit hit, 4))
         {
             if (hit.transform.TryGetComponent<IInteractable>(out var interactable))
             {

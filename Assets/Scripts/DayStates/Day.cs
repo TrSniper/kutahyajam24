@@ -1,53 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Day : MonoBehaviour
 {
-    // there are 7 days in the game, each day has 3 daystates and are dynamically modified based on players actions
-    private DayState currentState;
+    public DayState CurrentState { get; private set; }
+    public MorningState MorningState { get; private set; }
+    public AfternoonState AfternoonState { get; private set; }
+    public NightState NightState { get; private set; }
 
-    private DayState[] dayStates;
-
-    private Dictionary<PlayerAction, DayState> dayActions; // will accomodate actions performed by the player
-
-    MorningState morningState;
-    AfternoonState afternoonState;
-    NightState nightState;
-
-    public DayState CurrentState { get => currentState; private set => currentState = value; }
-    public MorningState MorningState { get => morningState; } // used for passing events
-    public AfternoonState AfternoonState { get => afternoonState; } // used for passing events
-    public NightState NightState { get => nightState; } // used for passing events
-
-    public void InitializeDay(int morningp, int afternoonp, int nightp)
+    public void InitializeDay(int morningPoints, int afternoonPoints, int nightPoints)
     {
-        // initialize the day states
-        dayStates = new DayState[3];
-        dayStates[0] = new MorningState();
-        dayStates[0].Init("Morning", morningp);
+        MorningState = new MorningState(morningPoints);
+        AfternoonState = new AfternoonState(afternoonPoints);
+        NightState = new NightState(nightPoints);
 
-        morningState = (MorningState)dayStates[0];
-
-
-        dayStates[1] = new AfternoonState();
-        dayStates[1].Init("Afternoon", afternoonp);
-        afternoonState = (AfternoonState)dayStates[1];
-
-
-        dayStates[2] = new NightState();
-        dayStates[2].Init("Night", nightp);
-        nightState = (NightState)dayStates[2];
-
-        // set the initial state to morning
-        CurrentState = dayStates[0];
+        CurrentState = MorningState;
         CurrentState.OnStateEnter();
     }
-   
-    public void ChangeState(DayState state)
+
+    public void ChangeState(DayState newState)
     {
         CurrentState.OnStateExit();
-        CurrentState = state;
+        CurrentState = newState;
         CurrentState.OnStateEnter();
     }
 }

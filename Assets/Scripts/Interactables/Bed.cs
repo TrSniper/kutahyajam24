@@ -8,6 +8,6 @@ public class Bed : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        DayManager.Instance.EndTheDay();
+        GameObject.Find("DayManager").GetComponent<DayManager>().EndTheDay();
     }
 }
