@@ -8,19 +8,31 @@ public class PlayerInteractor : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Interact();
+            TryInteracting();
         }
     }
-    public void Interact()
+    public void TryInteracting()
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, 100))
         {
-            IInteractable interactable = hit.transform.GetComponent<IInteractable>();
-            if (interactable != null)
+            if (hit.transform.TryGetComponent<IInteractable>(out var interactable))
             {
-                interactable.Interact();
+                switch (interactable.InteractType)
+                {
+                    case InteractionType.Default:
+                        interactable.Interact();
+                        break;
+                    case InteractionType.LevelInteraction:
+                        hit.transform.GetComponent<IInteractableWithDirection>().Interact(ray.direction);
+                        break;
+                    case InteractionType.Action:
+                        interactable.Interact(); /// TODO: implement action type interaction
+                        break;
+                    default: Debug.LogError("No Interaction Type");
+                        break;
+                }
             }
         }
     }
