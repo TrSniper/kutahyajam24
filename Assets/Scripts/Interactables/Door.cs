@@ -6,6 +6,8 @@ public class Door : MonoBehaviour, IInteractableWithDirection
     [SerializeField] InteractionType interactionType;
     public InteractionType InteractType { get => interactionType; }
 
+    public string InteractMessage => "Aç?";
+
     [SerializeField] Transform doorTransform;
     [SerializeField] bool isLocked = false;
 

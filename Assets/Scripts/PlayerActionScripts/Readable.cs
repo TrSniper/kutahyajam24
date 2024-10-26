@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Readable : MonoBehaviour, IAction
+public class Readable : MonoBehaviour, IActionInteractable
 {
     //this will work button based amk tabiikide ya
     [SerializeField] PlayerAction readingActionSO;
@@ -8,6 +8,8 @@ public class Readable : MonoBehaviour, IAction
     public PlayerAction PlayerAction => readingActionSO;
 
     public InteractionType InteractType => InteractionType.Action;
+
+    public string InteractMessage => "Oku?";
 
     public void Interact()
     {

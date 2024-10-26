@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Day : MonoBehaviour
@@ -7,6 +8,8 @@ public class Day : MonoBehaviour
     private DayState currentState;
 
     private DayState[] dayStates;
+
+    private Dictionary<PlayerAction, DayState> dayActions; // will accomodate actions performed by the player
 
     MorningState morningState;
     AfternoonState afternoonState;

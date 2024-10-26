@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 
-public class DigPoint : MonoBehaviour, IAction
+public class DigPoint : MonoBehaviour, IActionInteractable
 {
     [SerializeField] PlayerAction diggingActionSO;
     [SerializeField] bool isCluePoint;
     public PlayerAction PlayerAction => diggingActionSO;
 
     public InteractionType InteractType => InteractionType.Action;
+
+    public string InteractMessage => "Kaz?";
 
     public void Interact()
     {
