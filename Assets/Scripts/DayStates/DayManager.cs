@@ -7,6 +7,8 @@ public class DayManager : MonoBehaviour
     public int DayIndex = 0;
     public Day CurrentDay;
 
+    [SerializeField] private Transitioner transitioner;
+
     private void Start()
     {
         CurrentDay = Days[DayIndex];
