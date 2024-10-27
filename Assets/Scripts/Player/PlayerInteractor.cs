@@ -7,12 +7,6 @@ public class PlayerInteractor : MonoBehaviour
     IInteractable _interactableFound;
     public static event System.Action<string> OnFoundInteractable;
 
-    private void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
-
     private void Update()
     {
         if(_interactableFound != null)
@@ -42,7 +36,8 @@ public class PlayerInteractor : MonoBehaviour
 
     private void DefaultInteraction(IInteractable interactable) => interactable.Interact();
     private void LevelInteraction(IInteractableWithDirection interactable, Vector3 direction) => interactable.Interact(direction);
-    private void ActionInteraction(IInteractable interactable) => interactable.Interact();
+    private void ActionInteraction(IActionInteractable interactable) => interactable.Interact();
+    private void ItemInteractable(IItemInteractable interactable) => interactable.Interact();
 
     private IInteractable DetectInteractables()
     {

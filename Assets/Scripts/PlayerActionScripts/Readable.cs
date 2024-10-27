@@ -2,7 +2,6 @@
 
 public class Readable : MonoBehaviour, IActionInteractable
 {
-    //this will work button based amk tabiikide ya
     [SerializeField] PlayerAction readingActionSO;
     [SerializeField] ItemSO diarySO;
     public PlayerAction PlayerAction => readingActionSO;

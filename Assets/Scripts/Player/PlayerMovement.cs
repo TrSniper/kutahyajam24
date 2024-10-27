@@ -17,12 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float movementMultiplier = 1.0f;
     [SerializeField] float speed = 7.0f;
 
-    private void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
-
+  
     private void Update()
     {
         movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));

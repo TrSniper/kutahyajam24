@@ -11,14 +11,31 @@ public class PlayerCamera : MonoBehaviour
     private float rotationYaw = 0;
     private float rotationPitch = 0;
 
+    bool isUIOpen = false;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
+    void HandleUIStuff()
+    {
+        if (Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.visible = !Cursor.visible;
+            Cursor.lockState = Cursor.visible ? CursorLockMode.None : CursorLockMode.Locked;
+            isUIOpen = !isUIOpen;
+        }
+    }
+
     void Update()
     {
+        HandleUIStuff();
+        if (isUIOpen)
+        {
+            return;
+        }
         rotationYaw += Input.GetAxis("Mouse X") * sensitivity;
         rotationPitch -= Input.GetAxis("Mouse Y") * sensitivity;
 

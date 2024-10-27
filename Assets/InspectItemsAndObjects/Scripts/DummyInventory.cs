@@ -9,18 +9,22 @@ public class DummyInventory : MonoBehaviour {
     public event Action<ItemSO> OnItemSelected;
 
     [SerializeField] private List<ItemSO> itemList;
+    [SerializeField ]private Transform itemTemplate;
 
-    private Transform itemTemplate;
+    [Header("INVENTORY")]
+    [SerializeField] GameObject inventoryPanel;
+
+    private Transform itemGrid; // parent
     private Dictionary<ItemSO, Transform> itemSOTransformDic;
 
+
     private void Awake() {
-        itemTemplate = transform.Find("InventoryItemTemplate");
         itemTemplate.gameObject.SetActive(false);
 
         itemSOTransformDic = new Dictionary<ItemSO, Transform>();
 
         foreach (ItemSO itemSO in itemList) {
-            Transform itemTransform = Instantiate(itemTemplate, transform);
+            Transform itemTransform = Instantiate(itemTemplate, itemTemplate.parent);
             itemTransform.gameObject.SetActive(true);
             itemTransform.Find("Image").GetComponent<Image>().sprite = itemSO.sprite;
 
@@ -30,6 +34,39 @@ public class DummyInventory : MonoBehaviour {
                 SelectItem(itemSO);
             }); //these are all buttons so I will need to make all of the items buttons damn
         }
+        var pickableItems = GameObject.FindObjectsOfType<Pickupable>();
+        foreach (var item in pickableItems)
+        {
+            item.GetComponent<IItemInteractable>().OnItemPickUp += AddItem;
+        }
+    }
+
+    //write me a function to add items to the inventory
+    public void AddItem(ItemSO itemSO)
+    {
+        itemList.Add(itemSO);
+        Transform itemTransform = Instantiate(itemTemplate, itemTemplate.parent);
+        itemTransform.gameObject.SetActive(true);
+        itemTransform.Find("Image").GetComponent<Image>().sprite = itemSO.sprite;
+
+        itemSOTransformDic[itemSO] = itemTransform;
+
+        itemTransform.GetComponent<Button>().onClick.AddListener(() =>
+        {
+            SelectItem(itemSO);
+        });
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            HandleOpenInventory();
+        }
+    }
+    void HandleOpenInventory()
+    {
+        inventoryPanel.SetActive(!inventoryPanel.activeSelf);
     }
 
     private void SelectItem(ItemSO selectedItemSO) 
@@ -44,3 +81,4 @@ public class DummyInventory : MonoBehaviour {
     }
 
 }
+

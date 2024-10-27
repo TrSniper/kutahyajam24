@@ -11,7 +11,6 @@ public class ButtonManager : MonoBehaviour
     public void LoadGameMain()
     {
         SceneManager.LoadScene(1);
-        UIManager.Instance.CloseCharacterSelectMenu();
         Debug.Log("Load The Game");
     }
     public void LoadSettings()
@@ -28,11 +27,6 @@ public class ButtonManager : MonoBehaviour
     {
         Debug.Log("Open Exit Menu");
         UIManager.Instance.OpenExitMenu();
-    }
-    public void LoadCharacterSelect()
-    {
-        Debug.Log("Open Character Select");
-        UIManager.Instance.OpenCharacterSelectMenu();
     }
     public void OpenMainMenuBack()
     {

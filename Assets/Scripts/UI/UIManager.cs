@@ -19,7 +19,6 @@ public class UIManager : MonoSingleton<UIManager>
     [SerializeField] GameObject SettingsMenu;
     [SerializeField] GameObject AboutMenu;
     [SerializeField] GameObject ExitMenu;
-    [SerializeField] GameObject CharacterSelectMenu;
 
     [Header("INGAME OBJECTS")]
     [SerializeField] GameObject PauseMenu;
@@ -45,7 +44,7 @@ public class UIManager : MonoSingleton<UIManager>
 
     private void Start()
     {
-        menus = new GameObject[5] { MainMenu, SettingsMenu, AboutMenu, ExitMenu, CharacterSelectMenu};
+        menus = new GameObject[4] { MainMenu, SettingsMenu, AboutMenu, ExitMenu};
 
         SceneManager.activeSceneChanged += OnLevelChanged;
         DontDestroyOnLoad(gameObject);
@@ -131,18 +130,7 @@ public class UIManager : MonoSingleton<UIManager>
         }
         ExitMenu.SetActive(true);
     }
-    public void OpenCharacterSelectMenu()
-    {
-        for (int i = 0; i < 5; i++)
-        {
-            menus[i].SetActive(false);
-        }
-        CharacterSelectMenu.SetActive(true);
-    }
-    public void CloseCharacterSelectMenu()
-    {
-        CharacterSelectMenu.SetActive(false);
-    }
+
     #endregion
 
     #region InGame Menu Functions
@@ -202,15 +190,4 @@ public class UIManager : MonoSingleton<UIManager>
         OnSoundToggle?.Invoke(b);
     }
     #endregion
-
-    private void ChangeSettingsInputButtonText1(string text)
-    {
-        SettingsMenu.transform.Find("Input Handling/Input 1/InputAlt1/InputAltText1").gameObject.GetComponent<TextMeshProUGUI>().text = text;
-        InGameSettingsMenu.transform.Find("Input Handling/Input 1/InputAlt1/InputAltText1").gameObject.GetComponent<TextMeshProUGUI>().text = text;    
-    }
-    private void ChangeSettingsInputButtonText2(string text)
-    {
-        SettingsMenu.transform.Find("Input Handling/Input 2/InputAlt2/InputAltText2").gameObject.GetComponent<TextMeshProUGUI>().text = text;
-        InGameSettingsMenu.transform.Find("Input Handling/Input 2/InputAlt2/InputAltText2").gameObject.GetComponent<TextMeshProUGUI>().text = text;
-    }
 }
