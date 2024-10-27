@@ -17,6 +17,9 @@ public class DummyInventory : MonoBehaviour {
     private Transform itemGrid; // parent
     private Dictionary<ItemSO, Transform> itemSOTransformDic;
 
+    [Header("Debuging")]
+    [SerializeField] Pickupable[] pickableItems;
+
 
     private void Awake() {
         itemTemplate.gameObject.SetActive(false);
@@ -35,9 +38,9 @@ public class DummyInventory : MonoBehaviour {
             }); //these are all buttons so I will need to make all of the items buttons damn
         }
     }
-    private void OnLevelWasLoaded()
+    private void Start()
     {
-        var pickableItems = GameObject.FindObjectsOfType<Pickupable>();
+        pickableItems = GameObject.FindObjectsOfType<Pickupable>();
         if(pickableItems != null)
         {
             foreach (var item in pickableItems)

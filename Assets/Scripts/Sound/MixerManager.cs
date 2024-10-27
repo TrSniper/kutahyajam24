@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.Audio;
 
 public class MixerManager : MonoBehaviour
 {
     [SerializeField] AudioMixer audioMixer;
+    [SerializeField] TextMeshProUGUI soundText1,soundText2;
 
     private void Awake()
     {
@@ -31,6 +33,18 @@ public class MixerManager : MonoBehaviour
     void ToggleSound(bool b)
     {
         Camera.main.gameObject.GetComponent<AudioListener>().enabled = b;
+        if(b== true )
+        {
+            soundText1.text = "Sound: On";
+            soundText2.text = "Sound: On";
+
+        }
+        else
+        {
+            soundText1.text = "Sound: Off";
+            soundText2.text = "Sound: Off";
+
+        }
     }
 
 }

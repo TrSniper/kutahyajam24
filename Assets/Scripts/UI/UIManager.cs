@@ -47,7 +47,6 @@ public class UIManager : MonoSingleton<UIManager>
         menus = new GameObject[4] { MainMenu, SettingsMenu, AboutMenu, ExitMenu};
 
         SceneManager.activeSceneChanged += OnLevelChanged;
-        DontDestroyOnLoad(gameObject);
     }
     private void Update()
     {

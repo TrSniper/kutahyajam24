@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fa1bf716b1ab95429029b2d6f02b60a, type: 3}
-  m_Name: GardenMap2
+  m_Name: _DummySO
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  prefab: {fileID: 0}
+  sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  prefab: {fileID: 2972355402615366737, guid: 18128257784be5b4bb81cb1f198ed4b0, type: 3}
