@@ -7,5 +7,6 @@ public class ItemSO : ScriptableObject {
 
     public Sprite sprite;
     public Transform prefab;
+    public string itemDesc;
 
 }

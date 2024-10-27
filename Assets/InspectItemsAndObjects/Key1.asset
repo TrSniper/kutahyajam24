@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: edff832cf6f9f644fbc5d8df681b9e94, type: 3}
   prefab: {fileID: 4410757694667706, guid: e9e535b35fa65f24fbc1599e00a229e3, type: 3}
+  itemDesc: "Bir kap\u0131 i\xE7in \xE7ok b\xFCy\xFCk."

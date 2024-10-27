@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: ddbacd94296f8114bb5ca528ceaefdc3, type: 3}
   prefab: {fileID: 0}
+  itemDesc: "\xC7ok eski bir defter..."

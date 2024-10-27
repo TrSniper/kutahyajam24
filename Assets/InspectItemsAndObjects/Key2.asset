@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 699753b5f78d7854689a169aed64c62d, type: 3}
   prefab: {fileID: 4549476745134580, guid: 56d190a5250bea04ab643dd056b638f6, type: 3}
+  itemDesc: "Evde b\xF6yle bir anahtar deli\u011Fi yok."
