@@ -34,11 +34,18 @@ public class DummyInventory : MonoBehaviour {
                 SelectItem(itemSO);
             }); //these are all buttons so I will need to make all of the items buttons damn
         }
+    }
+    private void OnLevelWasLoaded()
+    {
         var pickableItems = GameObject.FindObjectsOfType<Pickupable>();
-        foreach (var item in pickableItems)
+        if(pickableItems != null)
         {
-            item.GetComponent<IItemInteractable>().OnItemPickUp += AddItem;
+            foreach (var item in pickableItems)
+            {
+                item.GetComponent<IItemInteractable>().OnItemPickUp += AddItem;
+            }
         }
+       
     }
 
     //write me a function to add items to the inventory

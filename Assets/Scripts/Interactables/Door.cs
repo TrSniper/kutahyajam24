@@ -19,6 +19,8 @@ public class Door : MonoBehaviour, IInteractableWithDirection
             doorTransform = transform;
     }
 
+    [SerializeField]
+    [Tooltip("Be Careful")]
     private bool isOpen = false;
     public void Interact()
     {

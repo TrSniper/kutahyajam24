@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa1bf716b1ab95429029b2d6f02b60a, type: 3}
   m_Name: DiaryOfPasha
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: ddbacd94296f8114bb5ca528ceaefdc3, type: 3}
   prefab: {fileID: 0}
